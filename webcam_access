@@ -1,0 +1,23 @@
+"""
+Created on Wed Dec 26 09:02:03 2018
+
+@author: AFUMETTO
+"""
+
+import numpy as np
+import cv2
+
+i = 1
+cap = cv2.VideoCapture("http://192.168.0.25:8080/?action=stream")
+while(True):
+    
+    ret, frame = cap.read()
+    cv2.imshow('frame',frame)
+    filename = "cap" + str(i) + ".jpg"
+    cv2.imwrite(filename,frame)
+    i = i + 1
+    if cv2.waitKey(10000) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
